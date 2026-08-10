@@ -3,13 +3,14 @@ import axios from 'axios';
 import HeroForm from '../components/HeroForm';
 import { AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../config/api';
 
 function AddNewHeroPage() {
   const navigate = useNavigate();
 
   const handleSaveHero = async (formData) => {
     try {
-      await axios.post('https://chashme-wala-backend.vercel.app/api/admin/createHero', formData, {
+      await axios.post(`${API_BASE_URL}/admin/createHero`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

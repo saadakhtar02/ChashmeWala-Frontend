@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiEye, FiEyeOff, FiAlertCircle } from 'react-icons/fi';
 import logo from '../../assets/logo.png';
+import API_BASE_URL from '../../config/api';
 
 function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -42,7 +43,7 @@ function AdminLogin() {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://chashme-wala-backend.vercel.app/api/admin/login',
+      const response = await axios.post(`${API_BASE_URL}/admin/login`,
         { email, password },
         {
           headers: {

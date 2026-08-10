@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function HeroSection() {
   const [heroSlides, setHeroSlides] = useState([]);
@@ -19,7 +20,7 @@ function HeroSection() {
   useEffect(() => {
     const fetchHeroData = async () => {
       try {
-        const response = await axios.get('https://chashme-wala-backend.vercel.app/api/home/hero');
+        const response = await axios.get(`${API_BASE_URL}/home/hero`);
         if (response.data && Array.isArray(response.data)) {
           setHeroSlides(response.data);
         }
@@ -44,14 +45,6 @@ function HeroSection() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
-
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-      return imagePath;
-    }
-    return `http://localhost:5000${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
   };
 
   if (!heroSlides.length) {

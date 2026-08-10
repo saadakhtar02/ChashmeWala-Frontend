@@ -6,6 +6,7 @@ import ProductTable from '../components/ProductTable';
 import ProductForm from '../components/ProductForm';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 import { AnimatePresence } from 'framer-motion';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 
 function AdminDashboard() {
@@ -24,10 +25,10 @@ function AdminDashboard() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('https://chashme-wala-backend.vercel.app/api/admin/getProduct');
+      const res = await axios.get(`${API_BASE_URL}/admin/getProduct`);
       const formatted = res.data.map((p) => ({
         ...p,
-        image: p.image && p.image.startsWith('/uploads') ? `http://localhost:5000${p.image}` : p.image
+        image: getImageUrl(p.image)
       }));
       setProducts(formatted);
     } catch (err) {
@@ -44,7 +45,7 @@ function AdminDashboard() {
   const handleUpdateProduct = async (formData) => {
     if (!selectedProduct) return;
     try {
-      await axios.put(`https://chashme-wala-backend.vercel.app/api/admin/product/${selectedProduct._id}`, formData, {
+      await axios.put(`${API_BASE_URL}/admin/product/${selectedProduct._id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -60,7 +61,7 @@ function AdminDashboard() {
   const handleDeleteProduct = async () => {
     if (!productToDelete) return;
     try {
-      await axios.delete(`https://chashme-wala-backend.vercel.app/api/admin/product/${productToDelete._id}`, {
+      await axios.delete(`${API_BASE_URL}/admin/product/${productToDelete._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

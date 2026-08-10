@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductForm from '../components/ProductForm';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../config/api';
 
 function AddProductPage() {
   const navigate = useNavigate();
 
   const handleSaveProduct = (formData) => {
-    axios.post('https://chashme-wala-backend.vercel.app/api/admin/createProduct', formData, {
+    axios.post(`${API_BASE_URL}/admin/createProduct`, formData, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       },

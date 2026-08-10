@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { FiStar, FiX, FiShield, FiPlusCircle, FiSearch, FiSliders } from 'react-icons/fi';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function ProductGrid({ activeCategory }) {
   const [allProducts, setAllProducts] = useState([]);
@@ -11,20 +12,12 @@ function ProductGrid({ activeCategory }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-      return imagePath;
-    }
-    return `http://localhost:5000${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
-  };
-
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
 
       try {
-        const res = await axios.get('https://chashme-wala-backend.vercel.app/api/home/products');
+        const res = await axios.get(`${API_BASE_URL}/home/products`);
         console.log('Products response:', res.data);
         setAllProducts(res.data);
       } catch (error) {
