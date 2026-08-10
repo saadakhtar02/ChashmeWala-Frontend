@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 
 function Navbar() {
   const handleScroll = (id) => {
@@ -12,9 +13,7 @@ function Navbar() {
     <nav className="glass-nav sticky top-0 z-40 w-full border-b border-white/10 shadow-lg shadow-gray-100/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="font-outfit font-black text-2xl tracking-widest text-gradient-gold">
-            CASHMEWALA
-          </span>
+          <img src={logo} alt="Chashmewala Logo" className="h-8 w-auto object-contain" />
         </div>
 
         <div className="hidden md:flex items-center gap-10 font-outfit font-semibold text-sm">

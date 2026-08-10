@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FiGrid, FiBox, FiPlusCircle, FiImage, FiLogOut, FiChevronLeft } from 'react-icons/fi';
+import logo from '../../assets/logo.png';
 
 function Sidebar({ activeTab, setActiveTab, collapsed: propCollapsed, setCollapsed: propSetCollapsed, onCloseMobile }) {
   const navigate = useNavigate();
@@ -68,9 +69,7 @@ function Sidebar({ activeTab, setActiveTab, collapsed: propCollapsed, setCollaps
                 collapsed ? 'opacity-0 max-w-0 max-[575px]:opacity-100 max-[575px]:max-w-[160px]' : 'opacity-100 max-w-[160px]'
               }`}
             >
-              <span className="font-outfit font-extrabold text-base tracking-wider text-gray-900 leading-none">
-                CASHMEWALA
-              </span>
+              <img src={logo} alt="Chashmewala Logo" className="h-6 w-auto object-contain" />
               <span className="text-[9px] font-bold text-amber-600 uppercase tracking-widest mt-1 font-sans">
                 Optical Studio
               </span>

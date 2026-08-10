@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiFacebook, FiTwitter, FiLinkedin, FiInstagram, FiBox, FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import logo from '../../assets/logo.png';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,7 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-left mb-16">
           {/* Col 1: Brand & Details */}
           <div className="flex flex-col gap-5">
-            <span className="font-outfit font-extrabold text-3xl tracking-wider text-gradient-gold">
-              CASHMEWALA
-            </span>
+            <img src={logo} alt="Chashmewala Logo" className="h-10 w-auto object-contain self-start" />
             <p className="text-xs text-gray-400 leading-relaxed max-w-xs font-sans">
               Follow our official social platforms for latest updates and eyewear collections.
             </p>

@@ -101,7 +101,7 @@ function HeroForm({ hero, onSave, onCancel }) {
               className={`w-full px-4 py-3 bg-white border ${
                 errors.subtitle ? 'border-red-500' : 'border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/15'
               } rounded-xl text-xs text-gray-900 focus:outline-none transition-all font-sans font-medium`}
-              placeholder="e.g. CASHMEWALA OPTICS • LUXURY 2026"
+              placeholder="e.g. CHASHMEWALA OPTICS • LUXURY 2026"
             />
             {errors.subtitle && <p className="mt-1.5 text-[11px] text-red-500 font-medium">{errors.subtitle}</p>}
           </div>

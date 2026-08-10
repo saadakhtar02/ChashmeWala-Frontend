@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiEye, FiEyeOff, FiAlertCircle } from 'react-icons/fi';
+import logo from '../../assets/logo.png';
 
 function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -77,9 +78,7 @@ function AdminLogin() {
 
       <div className="max-w-md w-full space-y-8 relative z-10">
         <div className="text-center">
-          <span className="font-outfit font-extrabold text-3xl tracking-widest text-gradient-gold">
-            CASHMEWALA
-          </span>
+          <img src={logo} alt="Chashmewala Logo" className="h-12 w-auto mx-auto object-contain" />
           <h2 className="mt-6 text-center text-3xl font-display font-extrabold text-gradient-premium">
             Admin Portal Access
           </h2>
@@ -112,7 +111,7 @@ function AdminLogin() {
                   className={`w-full pl-11 pr-4 py-3.5 bg-white/80 border ${
                     errors.email ? 'border-red-500' : 'border-gray-200 focus:border-gold'
                   } rounded text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-colors`}
-                  placeholder="admin@cashmewala.com"
+                  placeholder="admin@chashmewala.com"
                 />
               </div>
               {errors.email && (

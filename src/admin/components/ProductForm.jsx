@@ -360,7 +360,7 @@ function ProductForm({ product, onSave, onCancel }) {
               <div className="p-3.5 bg-white flex flex-col justify-between text-left">
                 <div>
                   <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gold block mb-0.5 font-outfit">
-                    {brand || 'CASHMEWALA OPTICS'}
+                    {brand || 'CHASHMEWALA OPTICS'}
                   </span>
 
                   <h3 className="font-outfit font-extrabold text-sm text-gray-900 line-clamp-1 mb-1 tracking-tight">

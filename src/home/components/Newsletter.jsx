@@ -25,7 +25,7 @@ function Newsletter() {
 
     const data = new FormData(e.target);
     data.append('access_key', '95269dfc-e314-4d85-9801-ab343f28790f');
-    data.append('subject', formData.subject || 'New Contact Us Inquiry - CashmeWala');
+    data.append('subject', formData.subject || 'New Contact Us Inquiry - ChashmeWala');
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
