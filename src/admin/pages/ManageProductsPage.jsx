@@ -20,7 +20,7 @@ function ManageProductsPage() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/getProduct');
+      const res = await axios.get('https://chashme-wala-backend.vercel.app/api/admin/getProduct');
       const formatted = res.data.map((p) => ({
         ...p,
         image: p.image && p.image.startsWith('/uploads') ? `http://localhost:5000${p.image}` : p.image
@@ -40,7 +40,7 @@ function ManageProductsPage() {
   const handleUpdateProduct = async (formData) => {
     if (!selectedProduct) return;
     try {
-      await axios.put(`http://localhost:5000/api/admin/product/${selectedProduct._id}`, formData, {
+      await axios.put(`https://chashme-wala-backend.vercel.app/api/admin/product/${selectedProduct._id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -56,7 +56,7 @@ function ManageProductsPage() {
   const handleDeleteProduct = async () => {
     if (!productToDelete) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/product/${productToDelete._id}`, {
+      await axios.delete(`https://chashme-wala-backend.vercel.app/api/admin/product/${productToDelete._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

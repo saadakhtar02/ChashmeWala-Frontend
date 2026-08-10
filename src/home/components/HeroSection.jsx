@@ -19,7 +19,7 @@ function HeroSection() {
   useEffect(() => {
     const fetchHeroData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/home/hero');
+        const response = await axios.get('https://chashme-wala-backend.vercel.app/api/home/hero');
         if (response.data && Array.isArray(response.data)) {
           setHeroSlides(response.data);
         }

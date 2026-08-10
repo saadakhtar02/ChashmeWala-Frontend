@@ -7,7 +7,7 @@ function AddProductPage() {
   const navigate = useNavigate();
 
   const handleSaveProduct = (formData) => {
-    axios.post('http://localhost:5000/api/admin/createProduct', formData, {
+    axios.post('https://chashme-wala-backend.vercel.app/api/admin/createProduct', formData, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       },

@@ -24,7 +24,7 @@ function ProductGrid({ activeCategory }) {
       setLoading(true);
 
       try {
-        const res = await axios.get('http://localhost:5000/api/home/products');
+        const res = await axios.get('https://chashme-wala-backend.vercel.app/api/home/products');
         console.log('Products response:', res.data);
         setAllProducts(res.data);
       } catch (error) {

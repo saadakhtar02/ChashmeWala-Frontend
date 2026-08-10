@@ -20,7 +20,7 @@ function HeroManagementPage() {
   const fetchHeroes = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/getHero');
+      const res = await axios.get('https://chashme-wala-backend.vercel.app/api/admin/getHero');
       const formatted = res.data.map((h) => ({
         ...h,
         image: h.image && h.image.startsWith('/uploads') ? `http://localhost:5000${h.image}` : h.image
@@ -40,7 +40,7 @@ function HeroManagementPage() {
   const handleUpdateHero = async (formData) => {
     if (!selectedHero) return;
     try {
-      await axios.put(`http://localhost:5000/api/admin/hero/${selectedHero._id}`, formData, {
+      await axios.put(`https://chashme-wala-backend.vercel.app/api/admin/hero/${selectedHero._id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -56,7 +56,7 @@ function HeroManagementPage() {
   const handleDeleteHero = async () => {
     if (!heroToDelete) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/hero/${heroToDelete._id}`, {
+      await axios.delete(`https://chashme-wala-backend.vercel.app/api/admin/hero/${heroToDelete._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

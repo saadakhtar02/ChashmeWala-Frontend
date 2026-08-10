@@ -9,7 +9,7 @@ function AddNewHeroPage() {
 
   const handleSaveHero = async (formData) => {
     try {
-      await axios.post('http://localhost:5000/api/admin/createHero', formData, {
+      await axios.post('https://chashme-wala-backend.vercel.app/api/admin/createHero', formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

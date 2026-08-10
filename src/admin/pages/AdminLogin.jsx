@@ -8,7 +8,7 @@ function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
@@ -22,7 +22,7 @@ function AdminLogin() {
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       tempErrors.email = "Email format is invalid";
     }
-    
+
     if (!password) {
       tempErrors.password = "Password is required";
     } else if (password.length < 4) {
@@ -36,22 +36,22 @@ function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setApiError('');
-    
+
     if (!validate()) return;
 
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/login',
+      const response = await axios.post('https://chashme-wala-backend.vercel.app/api/admin/login',
         { email, password },
         {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
 
       const data = response.data;
-      
+
       if (data.token) {
         localStorage.setItem('token', data.token);
 
@@ -60,8 +60,10 @@ function AdminLogin() {
         setApiError(data.message || 'Invalid email or password');
       }
     } catch (error) {
-      console.error('Login error:', error);
-      setApiError(error.response?.data?.message || 'Unable to connect to backend server. Check server running on port 5000.');
+      console.error("Login error:", error);
+      console.error("Response:", error.response);
+      console.error("Message:", error.message);
+
     } finally {
       setLoading(false);
     }
@@ -108,9 +110,8 @@ function AdminLogin() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={`w-full pl-11 pr-4 py-3.5 bg-white/80 border ${
-                    errors.email ? 'border-red-500' : 'border-gray-200 focus:border-gold'
-                  } rounded text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-colors`}
+                  className={`w-full pl-11 pr-4 py-3.5 bg-white/80 border ${errors.email ? 'border-red-500' : 'border-gray-200 focus:border-gold'
+                    } rounded text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-colors`}
                   placeholder="admin@chashmewala.com"
                 />
               </div>
@@ -135,9 +136,8 @@ function AdminLogin() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={`w-full pl-11 pr-11 py-3.5 bg-white/80 border ${
-                    errors.password ? 'border-red-500' : 'border-gray-200 focus:border-gold'
-                  } rounded text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-colors`}
+                  className={`w-full pl-11 pr-11 py-3.5 bg-white/80 border ${errors.password ? 'border-red-500' : 'border-gray-200 focus:border-gold'
+                    } rounded text-sm text-gray-900 placeholder-gray-400 focus:outline-none transition-colors`}
                   placeholder="••••••••"
                 />
                 <button
