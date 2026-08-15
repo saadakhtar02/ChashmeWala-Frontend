@@ -28,7 +28,7 @@ function AdminDashboard() {
       const res = await axios.get(`${API_BASE_URL}/admin/getProduct`);
       const formatted = res.data.map((p) => ({
         ...p,
-        image: getImageUrl(p.image)
+        image: getImageUrl(p.image || p.productImage)
       }));
       setProducts(formatted);
     } catch (err) {

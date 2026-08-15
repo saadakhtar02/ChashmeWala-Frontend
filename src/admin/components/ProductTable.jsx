@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch, FiEdit2, FiTrash2, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { getImageUrl } from '../../config/api';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -96,7 +97,7 @@ function ProductTable({ products, onEdit, onDeleteClick }) {
                 </tr>
               ) : (
                 paginatedProducts.map((prod) => {
-                  const fullImagePath = prod.image;
+                  const fullImagePath = getImageUrl(prod.image || prod.productImage);
 
                   return (
                     <tr key={prod._id} className="hover:bg-gray-50/60 transition-colors">
@@ -214,11 +215,10 @@ function ProductTable({ products, onEdit, onDeleteClick }) {
                 key={pageNum}
                 type="button"
                 onClick={() => setCurrentPage(pageNum)}
-                className={`w-9 h-9 rounded-xl text-xs font-bold font-outfit transition-all cursor-pointer ${
-                  currentPage === pageNum
+                className={`w-9 h-9 rounded-xl text-xs font-bold font-outfit transition-all cursor-pointer ${currentPage === pageNum
                     ? 'bg-gold text-white shadow-md shadow-gold/20'
                     : 'border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                }`}
+                  }`}
               >
                 {pageNum}
               </button>

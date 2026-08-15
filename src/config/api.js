@@ -1,10 +1,15 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://chashme-wala-backend.vercel.app/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const SERVER_URL = import.meta.env.VITE_SERVER_URL || API_BASE_URL.replace(/\/api\/?$/, '');
 
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return '';
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+  if (
+    imagePath.startsWith('http://') ||
+    imagePath.startsWith('https://') ||
+    imagePath.startsWith('blob:') ||
+    imagePath.startsWith('data:')
+  ) {
     return imagePath;
   }
   const cleanPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;

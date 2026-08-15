@@ -185,7 +185,7 @@ function ProductGrid({ activeCategory }) {
 
 
                     <img
-                      src={getImageUrl(product.image)}
+                      src={getImageUrl(product.image || product.productImage)}
                       alt={product.productName || 'Product'}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out"
                     />
@@ -312,7 +312,7 @@ function ProductGrid({ activeCategory }) {
                 </div>
               )}
               <img
-                src={getImageUrl(selectedProduct.image)}
+                src={getImageUrl(selectedProduct.image || selectedProduct.productImage)}
                 alt={selectedProduct.productName || 'Product'}
                 className="w-full h-full object-cover absolute inset-0"
               />

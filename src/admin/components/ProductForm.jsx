@@ -28,7 +28,7 @@ function ProductForm({ product, onSave, onCancel }) {
       setDiscount(product.discount || '0');
       setFinalPrice(product.finalPrice ?? 0);
       setStock(product.stock || '0');
-      setImagePreview(product.image);
+      setImagePreview(product.image || product.productImage || '');
     } else {
       setProductName('');
       setBrand('');
